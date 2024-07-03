@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Input Files
+measurements.txt
+measurements_test.txt
