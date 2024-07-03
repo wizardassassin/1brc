@@ -39,8 +39,9 @@ rl.on("line", (line) => {
 });
 
 rl.once("close", () => {
-    const arr = [...data];
-    arr.sort((a, b) => a[0].localeCompare(b[0]));
+    const sortedKeys = [...data.keys()];
+    sortedKeys.sort();
+    const arr = sortedKeys.map((x) => [x, data.get(x)]);
     const arr2 = arr.map(
         ([station, info]) =>
             `${station}=${info.min.toFixed(1)}/${(
