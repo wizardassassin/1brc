@@ -1,0 +1,44 @@
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build1:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: make main
+    - run: gunzip measurements_test.txt.gz
+    - run: ./main.out ./measurements_test.txt | tee output.txt
+    - run: diff output.txt baseline.txt
+
+  build2:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: make main2
+    - run: gunzip measurements_test.txt.gz
+    - run: ./main2.out ./measurements_test.txt | tee output.txt
+    - run: diff output.txt baseline.txt
+
+  build3:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js latest
+      uses: actions/setup-node@v4
+      with:
+        node-version: latest
+    - run: gunzip measurements_test.txt.gz
+    - run: node index.mjs ./measurements_test.txt | tee output.txt
+    - run: diff output.txt baseline.txt
