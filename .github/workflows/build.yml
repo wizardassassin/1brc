@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - run: make main
+    - run: make main.out
     - run: gunzip measurements_test.txt.gz
     - run: ./main.out ./measurements_test.txt | tee output.txt
     - run: diff output.txt baseline.txt
@@ -24,7 +24,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - run: make main2
+    - run: make main2.out
     - run: gunzip measurements_test.txt.gz
     - run: ./main2.out ./measurements_test.txt | tee output.txt
     - run: diff output.txt baseline.txt
