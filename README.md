@@ -1,6 +1,6 @@
 # 1brc
 
-A C++ and Node.js implementation of The One Billion Row Challenge.
+A C++ and Node.js implementation of [The One Billion Row Challenge](https://github.com/gunnarmorling/1brc).
 
 ## Getting Started
 
